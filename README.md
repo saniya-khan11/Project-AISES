@@ -51,7 +51,7 @@ Unlike a single-prompt LLM approach, AISES follows a modular pipeline that impro
 - Tree-sitter
 - ReportLab
 - JSON
-- Tkinter (Demonstration Project)
+
 
 ---
 
