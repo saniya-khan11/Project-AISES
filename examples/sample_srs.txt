@@ -1,0 +1,38 @@
+PYTHON TKINTER CALCULATOR APPLICATION
+Runtime: Python 3.10+
+Framework: Tkinter
+1. PURPOSE
+Develop a desktop calculator capable of performing basic arithmetic through a
+simple graphical interface.
+2. FUNCTIONAL REQUIREMENTS
+FR-01: Support numeric input (0-9), decimal point and multi-digit numbers.
+FR-02: Perform Addition (+), Subtraction (-), Multiplication (*) and Division (/).
+FR-03: Provide Clear (C) to reset all calculator state.
+FR-04: Provide Delete (DEL) to remove the last entered character.
+FR-05: Evaluate the expression when '=' is pressed.
+FR-06: Display formatted numeric results.
+FR-07: Validate division by zero BEFORE division and display an error message
+       instead of performing the calculation.
+3. NON-FUNCTIONAL REQUIREMENTS
+NFR-01: Easy-to-use calculator layout.
+NFR-02: Fast response to button presses.
+NFR-03: Cross-platform execution on Windows, Linux and macOS.
+NFR-04: Maintain correct calculator state during normal operations.
+4. USER INTERFACE
+- Display field for input and results.
+- Buttons: 0-9, ., +, -, *, /, =.
+- Control buttons: C and DEL.
+5. ACCEPTANCE CRITERIA
+AC-001: Digits append correctly.
+AC-002: Only one decimal per operand.
+AC-003: Multi-digit numbers are supported.
+AC-004: Addition works.
+AC-005: Subtraction works.
+AC-006: Multiplication works.
+AC-007: Division works.
+AC-008: Clear resets calculator state.
+AC-009: Delete removes the last character.
+AC-010: Division by zero is detected before calculation and an error is shown.
+AC-011: '=' computes the result.
+AC-012: Results are displayed correctly.
+

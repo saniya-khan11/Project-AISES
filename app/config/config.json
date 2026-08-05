@@ -1,0 +1,17 @@
+{
+    "project_name": "AISES Demo",
+    "srs_file": "examples/sample_srs.txt",
+    "source_code_folder": "examples/sample_project",
+    "output_directory": "outputs",
+
+    "gemini_model": "gemini-3.5-flash-lite",
+    "gemini_temperature": 0.1,
+    
+    "gemini_max_output_tokens": 8192,
+    "gemini_timeout_ms": 300000,
+    "gemini_min_request_interval_seconds": 13.0,
+
+    "mapper_max_candidate_files": 3,
+    "mapper_max_source_chars": 20000,
+    "mapper_response_parse_retries": 2
+}
