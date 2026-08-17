@@ -1,0 +1,309 @@
+{
+    "project_name": "Python Tkinter Calculator Application",
+    "project_description": "A desktop calculator capable of performing basic arithmetic through a simple graphical interface using Python and Tkinter.",
+    "acceptance_criteria": [
+        {
+            "ac_id": "AC-001",
+            "requirement_id": "FR-01",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
+            "description": "Digits 0 through 9 append correctly to the input display when pressed.",
+            "priority": "High",
+            "inputs": [
+                "Digit button (0-9)"
+            ],
+            "expected_outputs": [
+                "Appended digit on the display"
+            ],
+            "preconditions": [
+                "Calculator is running and display is active"
+            ],
+            "postconditions": [
+                "Display shows the newly appended digit"
+            ],
+            "keywords": [
+                "digit",
+                "append",
+                "input",
+                "button",
+                "tkinter"
+            ]
+        },
+        {
+            "ac_id": "AC-002",
+            "requirement_id": "FR-01",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
+            "description": "Only one decimal point is allowed per operand.",
+            "priority": "High",
+            "inputs": [
+                "Decimal point button (.)"
+            ],
+            "expected_outputs": [
+                "Decimal point added if not already present in the current operand"
+            ],
+            "preconditions": [
+                "Current operand does not contain a decimal point"
+            ],
+            "postconditions": [
+                "Decimal point is rendered in the display"
+            ],
+            "keywords": [
+                "decimal",
+                "point",
+                "operand",
+                "validation"
+            ]
+        },
+        {
+            "ac_id": "AC-003",
+            "requirement_id": "FR-01",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
+            "description": "Multi-digit numbers are supported and form correctly when consecutive digits are entered.",
+            "priority": "High",
+            "inputs": [
+                "Multiple digit buttons"
+            ],
+            "expected_outputs": [
+                "Complete multi-digit number shown on the display"
+            ],
+            "preconditions": [
+                "Calculator is active"
+            ],
+            "postconditions": [
+                "Display reflects the full concatenated multi-digit number"
+            ],
+            "keywords": [
+                "multi-digit",
+                "number",
+                "concatenation",
+                "input"
+            ]
+        },
+        {
+            "ac_id": "AC-004",
+            "requirement_id": "FR-02",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Addition operation computes the sum of operands correctly.",
+            "priority": "High",
+            "inputs": [
+                "Addition button (+)"
+            ],
+            "expected_outputs": [
+                "Addition operator added to expression / sum calculated upon equals"
+            ],
+            "preconditions": [
+                "Valid numeric input exists"
+            ],
+            "postconditions": [
+                "Operator is recorded in the calculation state"
+            ],
+            "keywords": [
+                "addition",
+                "add",
+                "operator",
+                "sum"
+            ]
+        },
+        {
+            "ac_id": "AC-005",
+            "requirement_id": "FR-02",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Subtraction operation computes the difference of operands correctly.",
+            "priority": "High",
+            "inputs": [
+                "Subtraction button (-)"
+            ],
+            "expected_outputs": [
+                "Subtraction operator added to expression / difference calculated upon equals"
+            ],
+            "preconditions": [
+                "Valid numeric input exists"
+            ],
+            "postconditions": [
+                "Operator is recorded in the calculation state"
+            ],
+            "keywords": [
+                "subtraction",
+                "subtract",
+                "operator",
+                "difference"
+            ]
+        },
+        {
+            "ac_id": "AC-006",
+            "requirement_id": "FR-02",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Multiplication operation computes the product of operands correctly.",
+            "priority": "High",
+            "inputs": [
+                "Multiplication button (*)"
+            ],
+            "expected_outputs": [
+                "Multiplication operator added to expression / product calculated upon equals"
+            ],
+            "preconditions": [
+                "Valid numeric input exists"
+            ],
+            "postconditions": [
+                "Operator is recorded in the calculation state"
+            ],
+            "keywords": [
+                "multiplication",
+                "multiply",
+                "operator",
+                "product"
+            ]
+        },
+        {
+            "ac_id": "AC-007",
+            "requirement_id": "FR-02",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Division operation computes the quotient of operands correctly.",
+            "priority": "High",
+            "inputs": [
+                "Division button (/)"
+            ],
+            "expected_outputs": [
+                "Division operator added to expression / quotient calculated upon equals"
+            ],
+            "preconditions": [
+                "Valid numeric input exists"
+            ],
+            "postconditions": [
+                "Operator is recorded in the calculation state"
+            ],
+            "keywords": [
+                "division",
+                "divide",
+                "operator",
+                "quotient"
+            ]
+        },
+        {
+            "ac_id": "AC-008",
+            "requirement_id": "FR-03",
+            "requirement_title": "Clear State",
+            "description": "Clear (C) button resets all calculator state and display values.",
+            "priority": "High",
+            "inputs": [
+                "Clear button (C)"
+            ],
+            "expected_outputs": [
+                "Display reset to default (e.g., 0 or empty)",
+                "Internal calculation state cleared"
+            ],
+            "preconditions": [
+                "Calculator has active input or results"
+            ],
+            "postconditions": [
+                "Calculator state is fully reset"
+            ],
+            "keywords": [
+                "clear",
+                "reset",
+                "state",
+                "C"
+            ]
+        },
+        {
+            "ac_id": "AC-009",
+            "requirement_id": "FR-04",
+            "requirement_title": "Delete Last Character",
+            "description": "Delete (DEL) button removes the last entered character from the input display.",
+            "priority": "Medium",
+            "inputs": [
+                "Delete button (DEL)"
+            ],
+            "expected_outputs": [
+                "Display shows string with the last character removed"
+            ],
+            "preconditions": [
+                "Display contains at least one character"
+            ],
+            "postconditions": [
+                "Last character is removed from display and expression buffer"
+            ],
+            "keywords": [
+                "delete",
+                "DEL",
+                "backspace",
+                "remove"
+            ]
+        },
+        {
+            "ac_id": "AC-010",
+            "requirement_id": "FR-07",
+            "requirement_title": "Division by Zero Validation",
+            "description": "Division by zero is detected before calculation and an error message is displayed instead of performing the calculation.",
+            "priority": "High",
+            "inputs": [
+                "Expression containing division by zero followed by equals (=)"
+            ],
+            "expected_outputs": [
+                "Error message displayed on screen",
+                "Calculation prevented"
+            ],
+            "preconditions": [
+                "Divisor evaluates to zero"
+            ],
+            "postconditions": [
+                "Error state active, preventing erroneous calculation"
+            ],
+            "keywords": [
+                "division-by-zero",
+                "validation",
+                "error",
+                "exception"
+            ]
+        },
+        {
+            "ac_id": "AC-011",
+            "requirement_id": "FR-05",
+            "requirement_title": "Evaluate Expression",
+            "description": "Pressing '=' computes the result of the current expression.",
+            "priority": "High",
+            "inputs": [
+                "Equals button (=)"
+            ],
+            "expected_outputs": [
+                "Evaluated result shown on the display"
+            ],
+            "preconditions": [
+                "Valid mathematical expression entered"
+            ],
+            "postconditions": [
+                "Expression evaluated and result presented"
+            ],
+            "keywords": [
+                "evaluate",
+                "equals",
+                "compute",
+                "result"
+            ]
+        },
+        {
+            "ac_id": "AC-012",
+            "requirement_id": "FR-06",
+            "requirement_title": "Display Formatted Numeric Results",
+            "description": "Results are formatted correctly and presented clearly on the display field.",
+            "priority": "Medium",
+            "inputs": [
+                "Computed calculation result"
+            ],
+            "expected_outputs": [
+                "Formatted numeric string shown on display"
+            ],
+            "preconditions": [
+                "Calculation has completed successfully"
+            ],
+            "postconditions": [
+                "Display updated with formatted result"
+            ],
+            "keywords": [
+                "display",
+                "format",
+                "numeric",
+                "result"
+            ]
+        }
+    ]
+}

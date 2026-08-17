@@ -1,0 +1,25 @@
+{
+    "base_commit": "76dc6ae7cc1376ea67f8ad3f06125489e2e4888a",
+    "target_commit": "0a15a7fd7b030b9a06d511cd9d6add62259e8932",
+    "reevaluate_ac_ids": [
+        "AC-004",
+        "AC-005",
+        "AC-006",
+        "AC-007",
+        "AC-010",
+        "AC-011",
+        "AC-012"
+    ],
+    "reuse_ac_ids": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-008",
+        "AC-009"
+    ],
+    "summary": {
+        "reevaluate_count": 7,
+        "reuse_count": 5,
+        "total_requirements": 12
+    }
+}

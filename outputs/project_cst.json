@@ -1,6 +1,6 @@
 {
     "project": {
-        "project_name": "sample_project",
+        "project_name": "calculator",
         "total_files": 1,
         "languages": [
             "python"
@@ -10,23 +10,23 @@
         {
             "file_id": "FILE-001",
             "filename": "Calculator.py",
-            "path": "examples\\sample_project\\Calculator.py",
+            "path": "C:\\Users\\lenovo\\Desktop\\test-git-repos\\calculator\\Calculator.py",
             "extension": ".py",
             "language": "python",
-            "size": 3573,
+            "size": 3734,
             "parse_status": "SUCCESS",
-            "source_code": "import tkinter as tk\nfrom tkinter import ttk\nclass Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True\n\n\nroot = tk.Tk()\nCalculator(root)\nroot.mainloop()",
+            "source_code": "import tkinter as tk\nfrom tkinter import ttk\nclass Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True\n\n\nroot = tk.Tk()\nCalculator(root)\nroot.mainloop()",
             "cst": {
                 "type": "module",
-                "text": "import tkinter as tk\nfrom tkinter import ttk\nclass Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True\n\n\nroot = tk.Tk()\nCalculator(root)\nroot.mainloop()",
+                "text": "import tkinter as tk\nfrom tkinter import ttk\nclass Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True\n\n\nroot = tk.Tk()\nCalculator(root)\nroot.mainloop()",
                 "start_byte": 0,
-                "end_byte": 3457,
+                "end_byte": 3613,
                 "start_point": {
                     "row": 0,
                     "column": 0
                 },
                 "end_point": {
-                    "row": 116,
+                    "row": 121,
                     "column": 15
                 },
                 "is_named": true,
@@ -278,15 +278,15 @@
                     },
                     {
                         "type": "class_definition",
-                        "text": "class Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                        "text": "class Calculator:\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
                         "start_byte": 45,
-                        "end_byte": 3407,
+                        "end_byte": 3563,
                         "start_point": {
                             "row": 2,
                             "column": 0
                         },
                         "end_point": {
-                            "row": 111,
+                            "row": 116,
                             "column": 33
                         },
                         "is_named": true,
@@ -345,15 +345,15 @@
                             },
                             {
                                 "type": "block",
-                                "text": "def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                "text": "def __init__(self, root):\n        self.root = root\n        self.root.title(\"Python Calculator\")\n\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n        self.display = tk.StringVar(value=\"0\")\n\n        ttk.Entry(\n            root,\n            textvariable=self.display,\n            justify=\"right\",\n            state=\"readonly\",\n            font=(\"Arial\", 20),\n            width=18,\n        ).grid(row=0, column=0, columnspan=4, padx=10, pady=10)\n\n        button_data = [\n            (\"C\", self.clear), (\"DEL\", self.delete),\n            (\"7\", lambda: self.digit(\"7\")), (\"8\", lambda: self.digit(\"8\")),\n            (\"9\", lambda: self.digit(\"9\")), (\"/\", lambda: self.set_operator(\"/\")),\n            (\"4\", lambda: self.digit(\"4\")), (\"5\", lambda: self.digit(\"5\")),\n            (\"6\", lambda: self.digit(\"6\")), (\"*\", lambda: self.set_operator(\"*\")),\n            (\"1\", lambda: self.digit(\"1\")), (\"2\", lambda: self.digit(\"2\")),\n            (\"3\", lambda: self.digit(\"3\")), (\"-\", lambda: self.set_operator(\"-\")),\n            (\".\", self.decimal), (\"0\", lambda: self.digit(\"0\")),\n            (\"=\", self.calculate), (\"+\", lambda: self.set_operator(\"+\")),\n        ]\n\n        for index, (text, command) in enumerate(button_data):\n            row = 1 + index // 4\n            column = index % 4\n\n            ttk.Button(\n                root,\n                text=text,\n                command=command,\n                width=7,\n            ).grid(row=row, column=column, padx=4, pady=4)\n\n    def digit(self, value):\n        current = self.display.get()\n\n        if self.new_input or current == \"0\":\n            self.display.set(value)\n            self.new_input = False\n        else:\n            self.display.set(current + value)\n\n    def decimal(self):\n        current = self.display.get()\n\n        if self.new_input:\n            self.display.set(\"0.\")\n            self.new_input = False\n        elif \".\" not in current:\n            self.display.set(current + \".\")\n\n    def set_operator(self, operator):\n        try:\n            self.first = float(self.display.get())\n            self.operator = operator\n            self.new_input = True\n        except ValueError:\n            self.clear()\n\n    def clear(self):\n        self.display.set(\"0\")\n        self.first = 0.0\n        self.operator = None\n        self.new_input = True\n\n    def delete(self):\n        current = self.display.get()\n\n        if len(current) > 1:\n            self.display.set(current[:-1])\n        else:\n            self.display.set(\"0\")\n            self.new_input = True\n\n    def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
                                 "start_byte": 67,
-                                "end_byte": 3407,
+                                "end_byte": 3563,
                                 "start_point": {
                                     "row": 3,
                                     "column": 4
                                 },
                                 "end_point": {
-                                    "row": 111,
+                                    "row": 116,
                                     "column": 33
                                 },
                                 "is_named": true,
@@ -18135,15 +18135,15 @@
                                     },
                                     {
                                         "type": "function_definition",
-                                        "text": "def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                        "text": "def calculate(self):\n        if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
                                         "start_byte": 2632,
-                                        "end_byte": 3407,
+                                        "end_byte": 3563,
                                         "start_point": {
                                             "row": 85,
                                             "column": 4
                                         },
                                         "end_point": {
-                                            "row": 111,
+                                            "row": 116,
                                             "column": 33
                                         },
                                         "is_named": true,
@@ -18271,15 +18271,15 @@
                                             },
                                             {
                                                 "type": "block",
-                                                "text": "if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                                "text": "if self.operator is None:\n            return\n\n        try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
                                                 "start_byte": 2661,
-                                                "end_byte": 3407,
+                                                "end_byte": 3563,
                                                 "start_point": {
                                                     "row": 86,
                                                     "column": 8
                                                 },
                                                 "end_point": {
-                                                    "row": 111,
+                                                    "row": 116,
                                                     "column": 33
                                                 },
                                                 "is_named": true,
@@ -18513,15 +18513,15 @@
                                                     },
                                                     {
                                                         "type": "try_statement",
-                                                        "text": "try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                                        "text": "try:\n            second = float(self.display.get())\n\n            operations = {\n                \"+\": lambda: self.first + second,\n                \"-\": lambda: self.first - second,\n                \"*\": lambda: self.first * second,\n                \"/\": lambda: self.first / second,\n            }\n\n            result = operations[self.operator]()\n            self.display.set(\n                str(int(result)) if result.is_integer() else str(result)\n            )\n\n            self.first = result\n            self.operator = None\n            self.new_input = True\n\n        except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True\n\n        except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
                                                         "start_byte": 2715,
-                                                        "end_byte": 3407,
+                                                        "end_byte": 3563,
                                                         "start_point": {
                                                             "row": 89,
                                                             "column": 8
                                                         },
                                                         "end_point": {
-                                                            "row": 111,
+                                                            "row": 116,
                                                             "column": 33
                                                         },
                                                         "is_named": true,
@@ -21617,9 +21617,9 @@
                                                             },
                                                             {
                                                                 "type": "except_clause",
-                                                                "text": "except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                                                "text": "except ZeroDivisionError:\n            self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True",
                                                                 "start_byte": 3285,
-                                                                "end_byte": 3407,
+                                                                "end_byte": 3431,
                                                                 "start_point": {
                                                                     "row": 108,
                                                                     "column": 8
@@ -21650,16 +21650,16 @@
                                                                     },
                                                                     {
                                                                         "type": "identifier",
-                                                                        "text": "Exception",
+                                                                        "text": "ZeroDivisionError",
                                                                         "start_byte": 3292,
-                                                                        "end_byte": 3301,
+                                                                        "end_byte": 3309,
                                                                         "start_point": {
                                                                             "row": 108,
                                                                             "column": 15
                                                                         },
                                                                         "end_point": {
                                                                             "row": 108,
-                                                                            "column": 24
+                                                                            "column": 32
                                                                         },
                                                                         "is_named": true,
                                                                         "has_error": false,
@@ -21668,15 +21668,15 @@
                                                                     {
                                                                         "type": ":",
                                                                         "text": ":",
-                                                                        "start_byte": 3301,
-                                                                        "end_byte": 3302,
+                                                                        "start_byte": 3309,
+                                                                        "end_byte": 3310,
                                                                         "start_point": {
                                                                             "row": 108,
-                                                                            "column": 24
+                                                                            "column": 32
                                                                         },
                                                                         "end_point": {
                                                                             "row": 108,
-                                                                            "column": 25
+                                                                            "column": 33
                                                                         },
                                                                         "is_named": false,
                                                                         "has_error": false,
@@ -21684,9 +21684,9 @@
                                                                     },
                                                                     {
                                                                         "type": "block",
-                                                                        "text": "self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
-                                                                        "start_byte": 3315,
-                                                                        "end_byte": 3407,
+                                                                        "text": "self.display.set(\"Cannot divide by zero\")\n            self.operator = None\n            self.new_input = True",
+                                                                        "start_byte": 3323,
+                                                                        "end_byte": 3431,
                                                                         "start_point": {
                                                                             "row": 109,
                                                                             "column": 12
@@ -21700,32 +21700,32 @@
                                                                         "children": [
                                                                             {
                                                                                 "type": "expression_statement",
-                                                                                "text": "self.display.set(\"Error\")",
-                                                                                "start_byte": 3315,
-                                                                                "end_byte": 3340,
+                                                                                "text": "self.display.set(\"Cannot divide by zero\")",
+                                                                                "start_byte": 3323,
+                                                                                "end_byte": 3364,
                                                                                 "start_point": {
                                                                                     "row": 109,
                                                                                     "column": 12
                                                                                 },
                                                                                 "end_point": {
                                                                                     "row": 109,
-                                                                                    "column": 37
+                                                                                    "column": 53
                                                                                 },
                                                                                 "is_named": true,
                                                                                 "has_error": false,
                                                                                 "children": [
                                                                                     {
                                                                                         "type": "call",
-                                                                                        "text": "self.display.set(\"Error\")",
-                                                                                        "start_byte": 3315,
-                                                                                        "end_byte": 3340,
+                                                                                        "text": "self.display.set(\"Cannot divide by zero\")",
+                                                                                        "start_byte": 3323,
+                                                                                        "end_byte": 3364,
                                                                                         "start_point": {
                                                                                             "row": 109,
                                                                                             "column": 12
                                                                                         },
                                                                                         "end_point": {
                                                                                             "row": 109,
-                                                                                            "column": 37
+                                                                                            "column": 53
                                                                                         },
                                                                                         "is_named": true,
                                                                                         "has_error": false,
@@ -21733,8 +21733,8 @@
                                                                                             {
                                                                                                 "type": "attribute",
                                                                                                 "text": "self.display.set",
-                                                                                                "start_byte": 3315,
-                                                                                                "end_byte": 3331,
+                                                                                                "start_byte": 3323,
+                                                                                                "end_byte": 3339,
                                                                                                 "start_point": {
                                                                                                     "row": 109,
                                                                                                     "column": 12
@@ -21749,8 +21749,8 @@
                                                                                                     {
                                                                                                         "type": "attribute",
                                                                                                         "text": "self.display",
-                                                                                                        "start_byte": 3315,
-                                                                                                        "end_byte": 3327,
+                                                                                                        "start_byte": 3323,
+                                                                                                        "end_byte": 3335,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
                                                                                                             "column": 12
@@ -21765,8 +21765,8 @@
                                                                                                             {
                                                                                                                 "type": "identifier",
                                                                                                                 "text": "self",
-                                                                                                                "start_byte": 3315,
-                                                                                                                "end_byte": 3319,
+                                                                                                                "start_byte": 3323,
+                                                                                                                "end_byte": 3327,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
                                                                                                                     "column": 12
@@ -21782,8 +21782,8 @@
                                                                                                             {
                                                                                                                 "type": ".",
                                                                                                                 "text": ".",
-                                                                                                                "start_byte": 3319,
-                                                                                                                "end_byte": 3320,
+                                                                                                                "start_byte": 3327,
+                                                                                                                "end_byte": 3328,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
                                                                                                                     "column": 16
@@ -21799,8 +21799,8 @@
                                                                                                             {
                                                                                                                 "type": "identifier",
                                                                                                                 "text": "display",
-                                                                                                                "start_byte": 3320,
-                                                                                                                "end_byte": 3327,
+                                                                                                                "start_byte": 3328,
+                                                                                                                "end_byte": 3335,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
                                                                                                                     "column": 17
@@ -21818,8 +21818,8 @@
                                                                                                     {
                                                                                                         "type": ".",
                                                                                                         "text": ".",
-                                                                                                        "start_byte": 3327,
-                                                                                                        "end_byte": 3328,
+                                                                                                        "start_byte": 3335,
+                                                                                                        "end_byte": 3336,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
                                                                                                             "column": 24
@@ -21835,8 +21835,8 @@
                                                                                                     {
                                                                                                         "type": "identifier",
                                                                                                         "text": "set",
-                                                                                                        "start_byte": 3328,
-                                                                                                        "end_byte": 3331,
+                                                                                                        "start_byte": 3336,
+                                                                                                        "end_byte": 3339,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
                                                                                                             "column": 25
@@ -21853,16 +21853,16 @@
                                                                                             },
                                                                                             {
                                                                                                 "type": "argument_list",
-                                                                                                "text": "(\"Error\")",
-                                                                                                "start_byte": 3331,
-                                                                                                "end_byte": 3340,
+                                                                                                "text": "(\"Cannot divide by zero\")",
+                                                                                                "start_byte": 3339,
+                                                                                                "end_byte": 3364,
                                                                                                 "start_point": {
                                                                                                     "row": 109,
                                                                                                     "column": 28
                                                                                                 },
                                                                                                 "end_point": {
                                                                                                     "row": 109,
-                                                                                                    "column": 37
+                                                                                                    "column": 53
                                                                                                 },
                                                                                                 "is_named": true,
                                                                                                 "has_error": false,
@@ -21870,8 +21870,8 @@
                                                                                                     {
                                                                                                         "type": "(",
                                                                                                         "text": "(",
-                                                                                                        "start_byte": 3331,
-                                                                                                        "end_byte": 3332,
+                                                                                                        "start_byte": 3339,
+                                                                                                        "end_byte": 3340,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
                                                                                                             "column": 28
@@ -21886,16 +21886,16 @@
                                                                                                     },
                                                                                                     {
                                                                                                         "type": "string",
-                                                                                                        "text": "\"Error\"",
-                                                                                                        "start_byte": 3332,
-                                                                                                        "end_byte": 3339,
+                                                                                                        "text": "\"Cannot divide by zero\"",
+                                                                                                        "start_byte": 3340,
+                                                                                                        "end_byte": 3363,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
                                                                                                             "column": 29
                                                                                                         },
                                                                                                         "end_point": {
                                                                                                             "row": 109,
-                                                                                                            "column": 36
+                                                                                                            "column": 52
                                                                                                         },
                                                                                                         "is_named": true,
                                                                                                         "has_error": false,
@@ -21903,8 +21903,8 @@
                                                                                                             {
                                                                                                                 "type": "string_start",
                                                                                                                 "text": "\"",
-                                                                                                                "start_byte": 3332,
-                                                                                                                "end_byte": 3333,
+                                                                                                                "start_byte": 3340,
+                                                                                                                "end_byte": 3341,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
                                                                                                                     "column": 29
@@ -21919,16 +21919,16 @@
                                                                                                             },
                                                                                                             {
                                                                                                                 "type": "string_content",
-                                                                                                                "text": "Error",
-                                                                                                                "start_byte": 3333,
-                                                                                                                "end_byte": 3338,
+                                                                                                                "text": "Cannot divide by zero",
+                                                                                                                "start_byte": 3341,
+                                                                                                                "end_byte": 3362,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
                                                                                                                     "column": 30
                                                                                                                 },
                                                                                                                 "end_point": {
                                                                                                                     "row": 109,
-                                                                                                                    "column": 35
+                                                                                                                    "column": 51
                                                                                                                 },
                                                                                                                 "is_named": true,
                                                                                                                 "has_error": false,
@@ -21937,15 +21937,15 @@
                                                                                                             {
                                                                                                                 "type": "string_end",
                                                                                                                 "text": "\"",
-                                                                                                                "start_byte": 3338,
-                                                                                                                "end_byte": 3339,
+                                                                                                                "start_byte": 3362,
+                                                                                                                "end_byte": 3363,
                                                                                                                 "start_point": {
                                                                                                                     "row": 109,
-                                                                                                                    "column": 35
+                                                                                                                    "column": 51
                                                                                                                 },
                                                                                                                 "end_point": {
                                                                                                                     "row": 109,
-                                                                                                                    "column": 36
+                                                                                                                    "column": 52
                                                                                                                 },
                                                                                                                 "is_named": true,
                                                                                                                 "has_error": false,
@@ -21956,15 +21956,15 @@
                                                                                                     {
                                                                                                         "type": ")",
                                                                                                         "text": ")",
-                                                                                                        "start_byte": 3339,
-                                                                                                        "end_byte": 3340,
+                                                                                                        "start_byte": 3363,
+                                                                                                        "end_byte": 3364,
                                                                                                         "start_point": {
                                                                                                             "row": 109,
-                                                                                                            "column": 36
+                                                                                                            "column": 52
                                                                                                         },
                                                                                                         "end_point": {
                                                                                                             "row": 109,
-                                                                                                            "column": 37
+                                                                                                            "column": 53
                                                                                                         },
                                                                                                         "is_named": false,
                                                                                                         "has_error": false,
@@ -21979,8 +21979,8 @@
                                                                             {
                                                                                 "type": "expression_statement",
                                                                                 "text": "self.operator = None",
-                                                                                "start_byte": 3353,
-                                                                                "end_byte": 3373,
+                                                                                "start_byte": 3377,
+                                                                                "end_byte": 3397,
                                                                                 "start_point": {
                                                                                     "row": 110,
                                                                                     "column": 12
@@ -21995,8 +21995,8 @@
                                                                                     {
                                                                                         "type": "assignment",
                                                                                         "text": "self.operator = None",
-                                                                                        "start_byte": 3353,
-                                                                                        "end_byte": 3373,
+                                                                                        "start_byte": 3377,
+                                                                                        "end_byte": 3397,
                                                                                         "start_point": {
                                                                                             "row": 110,
                                                                                             "column": 12
@@ -22011,8 +22011,8 @@
                                                                                             {
                                                                                                 "type": "attribute",
                                                                                                 "text": "self.operator",
-                                                                                                "start_byte": 3353,
-                                                                                                "end_byte": 3366,
+                                                                                                "start_byte": 3377,
+                                                                                                "end_byte": 3390,
                                                                                                 "start_point": {
                                                                                                     "row": 110,
                                                                                                     "column": 12
@@ -22027,8 +22027,8 @@
                                                                                                     {
                                                                                                         "type": "identifier",
                                                                                                         "text": "self",
-                                                                                                        "start_byte": 3353,
-                                                                                                        "end_byte": 3357,
+                                                                                                        "start_byte": 3377,
+                                                                                                        "end_byte": 3381,
                                                                                                         "start_point": {
                                                                                                             "row": 110,
                                                                                                             "column": 12
@@ -22044,8 +22044,8 @@
                                                                                                     {
                                                                                                         "type": ".",
                                                                                                         "text": ".",
-                                                                                                        "start_byte": 3357,
-                                                                                                        "end_byte": 3358,
+                                                                                                        "start_byte": 3381,
+                                                                                                        "end_byte": 3382,
                                                                                                         "start_point": {
                                                                                                             "row": 110,
                                                                                                             "column": 16
@@ -22061,8 +22061,8 @@
                                                                                                     {
                                                                                                         "type": "identifier",
                                                                                                         "text": "operator",
-                                                                                                        "start_byte": 3358,
-                                                                                                        "end_byte": 3366,
+                                                                                                        "start_byte": 3382,
+                                                                                                        "end_byte": 3390,
                                                                                                         "start_point": {
                                                                                                             "row": 110,
                                                                                                             "column": 17
@@ -22080,8 +22080,8 @@
                                                                                             {
                                                                                                 "type": "=",
                                                                                                 "text": "=",
-                                                                                                "start_byte": 3367,
-                                                                                                "end_byte": 3368,
+                                                                                                "start_byte": 3391,
+                                                                                                "end_byte": 3392,
                                                                                                 "start_point": {
                                                                                                     "row": 110,
                                                                                                     "column": 26
@@ -22097,8 +22097,8 @@
                                                                                             {
                                                                                                 "type": "none",
                                                                                                 "text": "None",
-                                                                                                "start_byte": 3369,
-                                                                                                "end_byte": 3373,
+                                                                                                "start_byte": 3393,
+                                                                                                "end_byte": 3397,
                                                                                                 "start_point": {
                                                                                                     "row": 110,
                                                                                                     "column": 28
@@ -22118,8 +22118,8 @@
                                                                             {
                                                                                 "type": "expression_statement",
                                                                                 "text": "self.new_input = True",
-                                                                                "start_byte": 3386,
-                                                                                "end_byte": 3407,
+                                                                                "start_byte": 3410,
+                                                                                "end_byte": 3431,
                                                                                 "start_point": {
                                                                                     "row": 111,
                                                                                     "column": 12
@@ -22134,8 +22134,8 @@
                                                                                     {
                                                                                         "type": "assignment",
                                                                                         "text": "self.new_input = True",
-                                                                                        "start_byte": 3386,
-                                                                                        "end_byte": 3407,
+                                                                                        "start_byte": 3410,
+                                                                                        "end_byte": 3431,
                                                                                         "start_point": {
                                                                                             "row": 111,
                                                                                             "column": 12
@@ -22150,8 +22150,8 @@
                                                                                             {
                                                                                                 "type": "attribute",
                                                                                                 "text": "self.new_input",
-                                                                                                "start_byte": 3386,
-                                                                                                "end_byte": 3400,
+                                                                                                "start_byte": 3410,
+                                                                                                "end_byte": 3424,
                                                                                                 "start_point": {
                                                                                                     "row": 111,
                                                                                                     "column": 12
@@ -22166,8 +22166,8 @@
                                                                                                     {
                                                                                                         "type": "identifier",
                                                                                                         "text": "self",
-                                                                                                        "start_byte": 3386,
-                                                                                                        "end_byte": 3390,
+                                                                                                        "start_byte": 3410,
+                                                                                                        "end_byte": 3414,
                                                                                                         "start_point": {
                                                                                                             "row": 111,
                                                                                                             "column": 12
@@ -22183,8 +22183,8 @@
                                                                                                     {
                                                                                                         "type": ".",
                                                                                                         "text": ".",
-                                                                                                        "start_byte": 3390,
-                                                                                                        "end_byte": 3391,
+                                                                                                        "start_byte": 3414,
+                                                                                                        "end_byte": 3415,
                                                                                                         "start_point": {
                                                                                                             "row": 111,
                                                                                                             "column": 16
@@ -22200,8 +22200,8 @@
                                                                                                     {
                                                                                                         "type": "identifier",
                                                                                                         "text": "new_input",
-                                                                                                        "start_byte": 3391,
-                                                                                                        "end_byte": 3400,
+                                                                                                        "start_byte": 3415,
+                                                                                                        "end_byte": 3424,
                                                                                                         "start_point": {
                                                                                                             "row": 111,
                                                                                                             "column": 17
@@ -22219,8 +22219,8 @@
                                                                                             {
                                                                                                 "type": "=",
                                                                                                 "text": "=",
-                                                                                                "start_byte": 3401,
-                                                                                                "end_byte": 3402,
+                                                                                                "start_byte": 3425,
+                                                                                                "end_byte": 3426,
                                                                                                 "start_point": {
                                                                                                     "row": 111,
                                                                                                     "column": 27
@@ -22236,14 +22236,657 @@
                                                                                             {
                                                                                                 "type": "true",
                                                                                                 "text": "True",
-                                                                                                "start_byte": 3403,
-                                                                                                "end_byte": 3407,
+                                                                                                "start_byte": 3427,
+                                                                                                "end_byte": 3431,
                                                                                                 "start_point": {
                                                                                                     "row": 111,
                                                                                                     "column": 29
                                                                                                 },
                                                                                                 "end_point": {
                                                                                                     "row": 111,
+                                                                                                    "column": 33
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": []
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "except_clause",
+                                                                "text": "except Exception:\n            self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                                                "start_byte": 3441,
+                                                                "end_byte": 3563,
+                                                                "start_point": {
+                                                                    "row": 113,
+                                                                    "column": 8
+                                                                },
+                                                                "end_point": {
+                                                                    "row": 116,
+                                                                    "column": 33
+                                                                },
+                                                                "is_named": true,
+                                                                "has_error": false,
+                                                                "children": [
+                                                                    {
+                                                                        "type": "except",
+                                                                        "text": "except",
+                                                                        "start_byte": 3441,
+                                                                        "end_byte": 3447,
+                                                                        "start_point": {
+                                                                            "row": 113,
+                                                                            "column": 8
+                                                                        },
+                                                                        "end_point": {
+                                                                            "row": 113,
+                                                                            "column": 14
+                                                                        },
+                                                                        "is_named": false,
+                                                                        "has_error": false,
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "identifier",
+                                                                        "text": "Exception",
+                                                                        "start_byte": 3448,
+                                                                        "end_byte": 3457,
+                                                                        "start_point": {
+                                                                            "row": 113,
+                                                                            "column": 15
+                                                                        },
+                                                                        "end_point": {
+                                                                            "row": 113,
+                                                                            "column": 24
+                                                                        },
+                                                                        "is_named": true,
+                                                                        "has_error": false,
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": ":",
+                                                                        "text": ":",
+                                                                        "start_byte": 3457,
+                                                                        "end_byte": 3458,
+                                                                        "start_point": {
+                                                                            "row": 113,
+                                                                            "column": 24
+                                                                        },
+                                                                        "end_point": {
+                                                                            "row": 113,
+                                                                            "column": 25
+                                                                        },
+                                                                        "is_named": false,
+                                                                        "has_error": false,
+                                                                        "children": []
+                                                                    },
+                                                                    {
+                                                                        "type": "block",
+                                                                        "text": "self.display.set(\"Error\")\n            self.operator = None\n            self.new_input = True",
+                                                                        "start_byte": 3471,
+                                                                        "end_byte": 3563,
+                                                                        "start_point": {
+                                                                            "row": 114,
+                                                                            "column": 12
+                                                                        },
+                                                                        "end_point": {
+                                                                            "row": 116,
+                                                                            "column": 33
+                                                                        },
+                                                                        "is_named": true,
+                                                                        "has_error": false,
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "expression_statement",
+                                                                                "text": "self.display.set(\"Error\")",
+                                                                                "start_byte": 3471,
+                                                                                "end_byte": 3496,
+                                                                                "start_point": {
+                                                                                    "row": 114,
+                                                                                    "column": 12
+                                                                                },
+                                                                                "end_point": {
+                                                                                    "row": 114,
+                                                                                    "column": 37
+                                                                                },
+                                                                                "is_named": true,
+                                                                                "has_error": false,
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "call",
+                                                                                        "text": "self.display.set(\"Error\")",
+                                                                                        "start_byte": 3471,
+                                                                                        "end_byte": 3496,
+                                                                                        "start_point": {
+                                                                                            "row": 114,
+                                                                                            "column": 12
+                                                                                        },
+                                                                                        "end_point": {
+                                                                                            "row": 114,
+                                                                                            "column": 37
+                                                                                        },
+                                                                                        "is_named": true,
+                                                                                        "has_error": false,
+                                                                                        "children": [
+                                                                                            {
+                                                                                                "type": "attribute",
+                                                                                                "text": "self.display.set",
+                                                                                                "start_byte": 3471,
+                                                                                                "end_byte": 3487,
+                                                                                                "start_point": {
+                                                                                                    "row": 114,
+                                                                                                    "column": 12
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 114,
+                                                                                                    "column": 28
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": [
+                                                                                                    {
+                                                                                                        "type": "attribute",
+                                                                                                        "text": "self.display",
+                                                                                                        "start_byte": 3471,
+                                                                                                        "end_byte": 3483,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 12
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 24
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": [
+                                                                                                            {
+                                                                                                                "type": "identifier",
+                                                                                                                "text": "self",
+                                                                                                                "start_byte": 3471,
+                                                                                                                "end_byte": 3475,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 12
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 16
+                                                                                                                },
+                                                                                                                "is_named": true,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "type": ".",
+                                                                                                                "text": ".",
+                                                                                                                "start_byte": 3475,
+                                                                                                                "end_byte": 3476,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 16
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 17
+                                                                                                                },
+                                                                                                                "is_named": false,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "type": "identifier",
+                                                                                                                "text": "display",
+                                                                                                                "start_byte": 3476,
+                                                                                                                "end_byte": 3483,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 17
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 24
+                                                                                                                },
+                                                                                                                "is_named": true,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            }
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": ".",
+                                                                                                        "text": ".",
+                                                                                                        "start_byte": 3483,
+                                                                                                        "end_byte": 3484,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 24
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 25
+                                                                                                        },
+                                                                                                        "is_named": false,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "identifier",
+                                                                                                        "text": "set",
+                                                                                                        "start_byte": 3484,
+                                                                                                        "end_byte": 3487,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 25
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 28
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "argument_list",
+                                                                                                "text": "(\"Error\")",
+                                                                                                "start_byte": 3487,
+                                                                                                "end_byte": 3496,
+                                                                                                "start_point": {
+                                                                                                    "row": 114,
+                                                                                                    "column": 28
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 114,
+                                                                                                    "column": 37
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": [
+                                                                                                    {
+                                                                                                        "type": "(",
+                                                                                                        "text": "(",
+                                                                                                        "start_byte": 3487,
+                                                                                                        "end_byte": 3488,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 28
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 29
+                                                                                                        },
+                                                                                                        "is_named": false,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "text": "\"Error\"",
+                                                                                                        "start_byte": 3488,
+                                                                                                        "end_byte": 3495,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 29
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 36
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": [
+                                                                                                            {
+                                                                                                                "type": "string_start",
+                                                                                                                "text": "\"",
+                                                                                                                "start_byte": 3488,
+                                                                                                                "end_byte": 3489,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 29
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 30
+                                                                                                                },
+                                                                                                                "is_named": true,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "type": "string_content",
+                                                                                                                "text": "Error",
+                                                                                                                "start_byte": 3489,
+                                                                                                                "end_byte": 3494,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 30
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 35
+                                                                                                                },
+                                                                                                                "is_named": true,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "type": "string_end",
+                                                                                                                "text": "\"",
+                                                                                                                "start_byte": 3494,
+                                                                                                                "end_byte": 3495,
+                                                                                                                "start_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 35
+                                                                                                                },
+                                                                                                                "end_point": {
+                                                                                                                    "row": 114,
+                                                                                                                    "column": 36
+                                                                                                                },
+                                                                                                                "is_named": true,
+                                                                                                                "has_error": false,
+                                                                                                                "children": []
+                                                                                                            }
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": ")",
+                                                                                                        "text": ")",
+                                                                                                        "start_byte": 3495,
+                                                                                                        "end_byte": 3496,
+                                                                                                        "start_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 36
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 114,
+                                                                                                            "column": 37
+                                                                                                        },
+                                                                                                        "is_named": false,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "expression_statement",
+                                                                                "text": "self.operator = None",
+                                                                                "start_byte": 3509,
+                                                                                "end_byte": 3529,
+                                                                                "start_point": {
+                                                                                    "row": 115,
+                                                                                    "column": 12
+                                                                                },
+                                                                                "end_point": {
+                                                                                    "row": 115,
+                                                                                    "column": 32
+                                                                                },
+                                                                                "is_named": true,
+                                                                                "has_error": false,
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "assignment",
+                                                                                        "text": "self.operator = None",
+                                                                                        "start_byte": 3509,
+                                                                                        "end_byte": 3529,
+                                                                                        "start_point": {
+                                                                                            "row": 115,
+                                                                                            "column": 12
+                                                                                        },
+                                                                                        "end_point": {
+                                                                                            "row": 115,
+                                                                                            "column": 32
+                                                                                        },
+                                                                                        "is_named": true,
+                                                                                        "has_error": false,
+                                                                                        "children": [
+                                                                                            {
+                                                                                                "type": "attribute",
+                                                                                                "text": "self.operator",
+                                                                                                "start_byte": 3509,
+                                                                                                "end_byte": 3522,
+                                                                                                "start_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 12
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 25
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": [
+                                                                                                    {
+                                                                                                        "type": "identifier",
+                                                                                                        "text": "self",
+                                                                                                        "start_byte": 3509,
+                                                                                                        "end_byte": 3513,
+                                                                                                        "start_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 12
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 16
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": ".",
+                                                                                                        "text": ".",
+                                                                                                        "start_byte": 3513,
+                                                                                                        "end_byte": 3514,
+                                                                                                        "start_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 16
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 17
+                                                                                                        },
+                                                                                                        "is_named": false,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "identifier",
+                                                                                                        "text": "operator",
+                                                                                                        "start_byte": 3514,
+                                                                                                        "end_byte": 3522,
+                                                                                                        "start_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 17
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 115,
+                                                                                                            "column": 25
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "=",
+                                                                                                "text": "=",
+                                                                                                "start_byte": 3523,
+                                                                                                "end_byte": 3524,
+                                                                                                "start_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 26
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 27
+                                                                                                },
+                                                                                                "is_named": false,
+                                                                                                "has_error": false,
+                                                                                                "children": []
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "none",
+                                                                                                "text": "None",
+                                                                                                "start_byte": 3525,
+                                                                                                "end_byte": 3529,
+                                                                                                "start_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 28
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 115,
+                                                                                                    "column": 32
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": []
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "expression_statement",
+                                                                                "text": "self.new_input = True",
+                                                                                "start_byte": 3542,
+                                                                                "end_byte": 3563,
+                                                                                "start_point": {
+                                                                                    "row": 116,
+                                                                                    "column": 12
+                                                                                },
+                                                                                "end_point": {
+                                                                                    "row": 116,
+                                                                                    "column": 33
+                                                                                },
+                                                                                "is_named": true,
+                                                                                "has_error": false,
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "assignment",
+                                                                                        "text": "self.new_input = True",
+                                                                                        "start_byte": 3542,
+                                                                                        "end_byte": 3563,
+                                                                                        "start_point": {
+                                                                                            "row": 116,
+                                                                                            "column": 12
+                                                                                        },
+                                                                                        "end_point": {
+                                                                                            "row": 116,
+                                                                                            "column": 33
+                                                                                        },
+                                                                                        "is_named": true,
+                                                                                        "has_error": false,
+                                                                                        "children": [
+                                                                                            {
+                                                                                                "type": "attribute",
+                                                                                                "text": "self.new_input",
+                                                                                                "start_byte": 3542,
+                                                                                                "end_byte": 3556,
+                                                                                                "start_point": {
+                                                                                                    "row": 116,
+                                                                                                    "column": 12
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 116,
+                                                                                                    "column": 26
+                                                                                                },
+                                                                                                "is_named": true,
+                                                                                                "has_error": false,
+                                                                                                "children": [
+                                                                                                    {
+                                                                                                        "type": "identifier",
+                                                                                                        "text": "self",
+                                                                                                        "start_byte": 3542,
+                                                                                                        "end_byte": 3546,
+                                                                                                        "start_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 12
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 16
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": ".",
+                                                                                                        "text": ".",
+                                                                                                        "start_byte": 3546,
+                                                                                                        "end_byte": 3547,
+                                                                                                        "start_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 16
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 17
+                                                                                                        },
+                                                                                                        "is_named": false,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "identifier",
+                                                                                                        "text": "new_input",
+                                                                                                        "start_byte": 3547,
+                                                                                                        "end_byte": 3556,
+                                                                                                        "start_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 17
+                                                                                                        },
+                                                                                                        "end_point": {
+                                                                                                            "row": 116,
+                                                                                                            "column": 26
+                                                                                                        },
+                                                                                                        "is_named": true,
+                                                                                                        "has_error": false,
+                                                                                                        "children": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "=",
+                                                                                                "text": "=",
+                                                                                                "start_byte": 3557,
+                                                                                                "end_byte": 3558,
+                                                                                                "start_point": {
+                                                                                                    "row": 116,
+                                                                                                    "column": 27
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 116,
+                                                                                                    "column": 28
+                                                                                                },
+                                                                                                "is_named": false,
+                                                                                                "has_error": false,
+                                                                                                "children": []
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "true",
+                                                                                                "text": "True",
+                                                                                                "start_byte": 3559,
+                                                                                                "end_byte": 3563,
+                                                                                                "start_point": {
+                                                                                                    "row": 116,
+                                                                                                    "column": 29
+                                                                                                },
+                                                                                                "end_point": {
+                                                                                                    "row": 116,
                                                                                                     "column": 33
                                                                                                 },
                                                                                                 "is_named": true,
@@ -22271,14 +22914,14 @@
                     {
                         "type": "expression_statement",
                         "text": "root = tk.Tk()",
-                        "start_byte": 3410,
-                        "end_byte": 3424,
+                        "start_byte": 3566,
+                        "end_byte": 3580,
                         "start_point": {
-                            "row": 114,
+                            "row": 119,
                             "column": 0
                         },
                         "end_point": {
-                            "row": 114,
+                            "row": 119,
                             "column": 14
                         },
                         "is_named": true,
@@ -22287,14 +22930,14 @@
                             {
                                 "type": "assignment",
                                 "text": "root = tk.Tk()",
-                                "start_byte": 3410,
-                                "end_byte": 3424,
+                                "start_byte": 3566,
+                                "end_byte": 3580,
                                 "start_point": {
-                                    "row": 114,
+                                    "row": 119,
                                     "column": 0
                                 },
                                 "end_point": {
-                                    "row": 114,
+                                    "row": 119,
                                     "column": 14
                                 },
                                 "is_named": true,
@@ -22303,14 +22946,14 @@
                                     {
                                         "type": "identifier",
                                         "text": "root",
-                                        "start_byte": 3410,
-                                        "end_byte": 3414,
+                                        "start_byte": 3566,
+                                        "end_byte": 3570,
                                         "start_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 0
                                         },
                                         "end_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 4
                                         },
                                         "is_named": true,
@@ -22320,14 +22963,14 @@
                                     {
                                         "type": "=",
                                         "text": "=",
-                                        "start_byte": 3415,
-                                        "end_byte": 3416,
+                                        "start_byte": 3571,
+                                        "end_byte": 3572,
                                         "start_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 5
                                         },
                                         "end_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 6
                                         },
                                         "is_named": false,
@@ -22337,14 +22980,14 @@
                                     {
                                         "type": "call",
                                         "text": "tk.Tk()",
-                                        "start_byte": 3417,
-                                        "end_byte": 3424,
+                                        "start_byte": 3573,
+                                        "end_byte": 3580,
                                         "start_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 7
                                         },
                                         "end_point": {
-                                            "row": 114,
+                                            "row": 119,
                                             "column": 14
                                         },
                                         "is_named": true,
@@ -22353,14 +22996,14 @@
                                             {
                                                 "type": "attribute",
                                                 "text": "tk.Tk",
-                                                "start_byte": 3417,
-                                                "end_byte": 3422,
+                                                "start_byte": 3573,
+                                                "end_byte": 3578,
                                                 "start_point": {
-                                                    "row": 114,
+                                                    "row": 119,
                                                     "column": 7
                                                 },
                                                 "end_point": {
-                                                    "row": 114,
+                                                    "row": 119,
                                                     "column": 12
                                                 },
                                                 "is_named": true,
@@ -22369,14 +23012,14 @@
                                                     {
                                                         "type": "identifier",
                                                         "text": "tk",
-                                                        "start_byte": 3417,
-                                                        "end_byte": 3419,
+                                                        "start_byte": 3573,
+                                                        "end_byte": 3575,
                                                         "start_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 7
                                                         },
                                                         "end_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 9
                                                         },
                                                         "is_named": true,
@@ -22386,14 +23029,14 @@
                                                     {
                                                         "type": ".",
                                                         "text": ".",
-                                                        "start_byte": 3419,
-                                                        "end_byte": 3420,
+                                                        "start_byte": 3575,
+                                                        "end_byte": 3576,
                                                         "start_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 9
                                                         },
                                                         "end_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 10
                                                         },
                                                         "is_named": false,
@@ -22403,14 +23046,14 @@
                                                     {
                                                         "type": "identifier",
                                                         "text": "Tk",
-                                                        "start_byte": 3420,
-                                                        "end_byte": 3422,
+                                                        "start_byte": 3576,
+                                                        "end_byte": 3578,
                                                         "start_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 10
                                                         },
                                                         "end_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 12
                                                         },
                                                         "is_named": true,
@@ -22422,14 +23065,14 @@
                                             {
                                                 "type": "argument_list",
                                                 "text": "()",
-                                                "start_byte": 3422,
-                                                "end_byte": 3424,
+                                                "start_byte": 3578,
+                                                "end_byte": 3580,
                                                 "start_point": {
-                                                    "row": 114,
+                                                    "row": 119,
                                                     "column": 12
                                                 },
                                                 "end_point": {
-                                                    "row": 114,
+                                                    "row": 119,
                                                     "column": 14
                                                 },
                                                 "is_named": true,
@@ -22438,14 +23081,14 @@
                                                     {
                                                         "type": "(",
                                                         "text": "(",
-                                                        "start_byte": 3422,
-                                                        "end_byte": 3423,
+                                                        "start_byte": 3578,
+                                                        "end_byte": 3579,
                                                         "start_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 12
                                                         },
                                                         "end_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 13
                                                         },
                                                         "is_named": false,
@@ -22455,14 +23098,14 @@
                                                     {
                                                         "type": ")",
                                                         "text": ")",
-                                                        "start_byte": 3423,
-                                                        "end_byte": 3424,
+                                                        "start_byte": 3579,
+                                                        "end_byte": 3580,
                                                         "start_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 13
                                                         },
                                                         "end_point": {
-                                                            "row": 114,
+                                                            "row": 119,
                                                             "column": 14
                                                         },
                                                         "is_named": false,
@@ -22480,14 +23123,14 @@
                     {
                         "type": "expression_statement",
                         "text": "Calculator(root)",
-                        "start_byte": 3425,
-                        "end_byte": 3441,
+                        "start_byte": 3581,
+                        "end_byte": 3597,
                         "start_point": {
-                            "row": 115,
+                            "row": 120,
                             "column": 0
                         },
                         "end_point": {
-                            "row": 115,
+                            "row": 120,
                             "column": 16
                         },
                         "is_named": true,
@@ -22496,14 +23139,14 @@
                             {
                                 "type": "call",
                                 "text": "Calculator(root)",
-                                "start_byte": 3425,
-                                "end_byte": 3441,
+                                "start_byte": 3581,
+                                "end_byte": 3597,
                                 "start_point": {
-                                    "row": 115,
+                                    "row": 120,
                                     "column": 0
                                 },
                                 "end_point": {
-                                    "row": 115,
+                                    "row": 120,
                                     "column": 16
                                 },
                                 "is_named": true,
@@ -22512,14 +23155,14 @@
                                     {
                                         "type": "identifier",
                                         "text": "Calculator",
-                                        "start_byte": 3425,
-                                        "end_byte": 3435,
+                                        "start_byte": 3581,
+                                        "end_byte": 3591,
                                         "start_point": {
-                                            "row": 115,
+                                            "row": 120,
                                             "column": 0
                                         },
                                         "end_point": {
-                                            "row": 115,
+                                            "row": 120,
                                             "column": 10
                                         },
                                         "is_named": true,
@@ -22529,14 +23172,14 @@
                                     {
                                         "type": "argument_list",
                                         "text": "(root)",
-                                        "start_byte": 3435,
-                                        "end_byte": 3441,
+                                        "start_byte": 3591,
+                                        "end_byte": 3597,
                                         "start_point": {
-                                            "row": 115,
+                                            "row": 120,
                                             "column": 10
                                         },
                                         "end_point": {
-                                            "row": 115,
+                                            "row": 120,
                                             "column": 16
                                         },
                                         "is_named": true,
@@ -22545,14 +23188,14 @@
                                             {
                                                 "type": "(",
                                                 "text": "(",
-                                                "start_byte": 3435,
-                                                "end_byte": 3436,
+                                                "start_byte": 3591,
+                                                "end_byte": 3592,
                                                 "start_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 10
                                                 },
                                                 "end_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 11
                                                 },
                                                 "is_named": false,
@@ -22562,14 +23205,14 @@
                                             {
                                                 "type": "identifier",
                                                 "text": "root",
-                                                "start_byte": 3436,
-                                                "end_byte": 3440,
+                                                "start_byte": 3592,
+                                                "end_byte": 3596,
                                                 "start_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 11
                                                 },
                                                 "end_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 15
                                                 },
                                                 "is_named": true,
@@ -22579,14 +23222,14 @@
                                             {
                                                 "type": ")",
                                                 "text": ")",
-                                                "start_byte": 3440,
-                                                "end_byte": 3441,
+                                                "start_byte": 3596,
+                                                "end_byte": 3597,
                                                 "start_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 15
                                                 },
                                                 "end_point": {
-                                                    "row": 115,
+                                                    "row": 120,
                                                     "column": 16
                                                 },
                                                 "is_named": false,
@@ -22602,14 +23245,14 @@
                     {
                         "type": "expression_statement",
                         "text": "root.mainloop()",
-                        "start_byte": 3442,
-                        "end_byte": 3457,
+                        "start_byte": 3598,
+                        "end_byte": 3613,
                         "start_point": {
-                            "row": 116,
+                            "row": 121,
                             "column": 0
                         },
                         "end_point": {
-                            "row": 116,
+                            "row": 121,
                             "column": 15
                         },
                         "is_named": true,
@@ -22618,14 +23261,14 @@
                             {
                                 "type": "call",
                                 "text": "root.mainloop()",
-                                "start_byte": 3442,
-                                "end_byte": 3457,
+                                "start_byte": 3598,
+                                "end_byte": 3613,
                                 "start_point": {
-                                    "row": 116,
+                                    "row": 121,
                                     "column": 0
                                 },
                                 "end_point": {
-                                    "row": 116,
+                                    "row": 121,
                                     "column": 15
                                 },
                                 "is_named": true,
@@ -22634,14 +23277,14 @@
                                     {
                                         "type": "attribute",
                                         "text": "root.mainloop",
-                                        "start_byte": 3442,
-                                        "end_byte": 3455,
+                                        "start_byte": 3598,
+                                        "end_byte": 3611,
                                         "start_point": {
-                                            "row": 116,
+                                            "row": 121,
                                             "column": 0
                                         },
                                         "end_point": {
-                                            "row": 116,
+                                            "row": 121,
                                             "column": 13
                                         },
                                         "is_named": true,
@@ -22650,14 +23293,14 @@
                                             {
                                                 "type": "identifier",
                                                 "text": "root",
-                                                "start_byte": 3442,
-                                                "end_byte": 3446,
+                                                "start_byte": 3598,
+                                                "end_byte": 3602,
                                                 "start_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 0
                                                 },
                                                 "end_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 4
                                                 },
                                                 "is_named": true,
@@ -22667,14 +23310,14 @@
                                             {
                                                 "type": ".",
                                                 "text": ".",
-                                                "start_byte": 3446,
-                                                "end_byte": 3447,
+                                                "start_byte": 3602,
+                                                "end_byte": 3603,
                                                 "start_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 4
                                                 },
                                                 "end_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 5
                                                 },
                                                 "is_named": false,
@@ -22684,14 +23327,14 @@
                                             {
                                                 "type": "identifier",
                                                 "text": "mainloop",
-                                                "start_byte": 3447,
-                                                "end_byte": 3455,
+                                                "start_byte": 3603,
+                                                "end_byte": 3611,
                                                 "start_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 5
                                                 },
                                                 "end_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 13
                                                 },
                                                 "is_named": true,
@@ -22703,14 +23346,14 @@
                                     {
                                         "type": "argument_list",
                                         "text": "()",
-                                        "start_byte": 3455,
-                                        "end_byte": 3457,
+                                        "start_byte": 3611,
+                                        "end_byte": 3613,
                                         "start_point": {
-                                            "row": 116,
+                                            "row": 121,
                                             "column": 13
                                         },
                                         "end_point": {
-                                            "row": 116,
+                                            "row": 121,
                                             "column": 15
                                         },
                                         "is_named": true,
@@ -22719,14 +23362,14 @@
                                             {
                                                 "type": "(",
                                                 "text": "(",
-                                                "start_byte": 3455,
-                                                "end_byte": 3456,
+                                                "start_byte": 3611,
+                                                "end_byte": 3612,
                                                 "start_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 13
                                                 },
                                                 "end_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 14
                                                 },
                                                 "is_named": false,
@@ -22736,14 +23379,14 @@
                                             {
                                                 "type": ")",
                                                 "text": ")",
-                                                "start_byte": 3456,
-                                                "end_byte": 3457,
+                                                "start_byte": 3612,
+                                                "end_byte": 3613,
                                                 "start_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 14
                                                 },
                                                 "end_point": {
-                                                    "row": 116,
+                                                    "row": 121,
                                                     "column": 15
                                                 },
                                                 "is_named": false,

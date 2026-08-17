@@ -8,13 +8,12 @@
             "Calculator.py"
         ],
         "strengths": [
-            "Buttons for digits 0 through 9 are correctly mapped to lambda functions calling the digit method.",
-            "The digit method correctly handles new inputs and appending to existing display text.",
-            "Initial '0' display or new input states are correctly overwritten or appended to."
+            "Buttons for digits 0 through 9 are correctly mapped to the digit method with their respective string values.",
+            "The digit method handles replacing initial zero/new input flags as well as appending subsequent digits properly."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py fully implements the AC-001 acceptance criterion. The `digit` method receives values '0' through '9' via button mappings, checks if a new input is starting or if the current display is '0', and correctly replaces or appends the digit to the current input display."
+        "reasoning": "The source code in Calculator.py implements button data mapping for digits 0 through 9 to call self.digit(value). The digit method correctly fetches the current display value, checks for new input or a default '0' state, and correctly replaces or appends the pressed digit string to self.display, fully satisfying AC-001."
     },
     {
         "ac_id": "AC-002",
@@ -25,12 +24,11 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The `decimal` method correctly checks if `'.'` is already present in the current display string before appending a new decimal point.",
-            "Handles `new_input` states properly by initializing the display to '0.' when a decimal is pressed on a fresh operand."
+            "The decimal method explicitly checks if '.' is already present in the current display value before appending a new decimal point."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "In Calculator.py, the decimal method implements the check `elif '.' not in current:` which prevents multiple decimal points from being added to the same operand."
+        "reasoning": "The code in Calculator.py implements the decimal method which handles adding a decimal point. It checks `elif \".\" not in current:` which ensures that only one decimal point can be added per operand entry."
     },
     {
         "ac_id": "AC-003",
@@ -41,12 +39,11 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The `digit` method correctly checks if new input is expected or if the current display is '0', updating the value or appending sequential digits properly.",
-            "The `decimal` method ensures a single decimal point is allowed and correctly handles appending it to multi-digit numbers."
+            "The digit method correctly handles string concatenation of consecutive digit inputs when self.new_input is False and the current display is not '0'."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py implements the digit method which concatenates subsequent digit inputs to the current display string when new_input is False and current != '0', fully satisfying the requirement for multi-digit numbers and sequential entry."
+        "reasoning": "The 'digit' method in Calculator.py checks whether new input is expected or if the current display is '0'; if not, it appends the new digit to the existing string (current + value), properly supporting multi-digit number entry."
     },
     {
         "ac_id": "AC-004",
@@ -57,13 +54,13 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The addition operator is properly bound in the UI button data list.",
-            "The calculate method uses a dictionary mapping containing the '+' operation correctly using self.first + second.",
-            "Calculated sums correctly update the display and support chaining operations via self.first = result."
+            "The '+' button properly registers the addition operator via set_operator.",
+            "The calculate method defines the addition operation lambda: self.first + second which correctly computes the sum of the operands.",
+            "Operands are correctly parsed as floats before calculation."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "Calculator.py implements the addition operation via the '+' key mapping in button_data, stores the first operand in self.first upon setting the operator, and executes the sum using lambda: self.first + second within the calculate method when '=' is pressed."
+        "reasoning": "The Calculator class implements the addition operation in the calculate method using operations[\"+\"]: lambda: self.first + second, correctly computing the sum of the operands and updating the display."
     },
     {
         "ac_id": "AC-005",
@@ -74,12 +71,13 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The subtraction operator is mapped correctly in the button data.",
-            "The calculate method properly handles the subtraction operation using `self.first - second`."
+            "Subtraction is correctly mapped using self.first - second in the operations dictionary.",
+            "Operands are properly parsed as floats.",
+            "Result formatting correctly handles integer representations."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py defines the '-' operator in button_data to set the operator and implements the subtraction lambda (`\"-\": lambda: self.first - second`) inside the calculate method, correctly computing the difference between operands."
+        "reasoning": "The source code in Calculator.py fully implements the subtraction operation by mapping the '-' operator to a lambda function that calculates self.first - second within the calculate method."
     },
     {
         "ac_id": "AC-006",
@@ -90,12 +88,12 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The multiplication operator is correctly mapped in the operations dictionary as `\"*\": lambda: self.first * second`.",
-            "Operands are correctly converted to float types prior to calculation to handle decimals."
+            "The multiplication operator '*' is mapped correctly to set_operator.",
+            "The calculate method implements multiplication using 'self.first * second'."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py fully implements the multiplication operation within the calculate method via a dictionary mapping that correctly evaluates `self.first * second` when the `*` operator is selected."
+        "reasoning": "Calculator.py correctly sets up the '*' button command via set_operator('*') and implements the multiplication operation in the operations dictionary as 'self.first * second', satisfying the requirement completely."
     },
     {
         "ac_id": "AC-007",
@@ -106,12 +104,13 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The division operator '/' is correctly mapped in operations dictionary to perform self.first / second.",
-            "Exception handling is present to catch runtime errors such as division by zero."
+            "Division operation is correctly implemented using the '/' operator in the calculate method.",
+            "Handles division by zero properly with a ZeroDivisionError exception handler.",
+            "Maps the division button '/' cleanly to the set_operator function."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py implements the division operation within the calculate method using the '/' operator lambda function (self.first / second), properly calculating the quotient and handling potential exceptions."
+        "reasoning": "The source code in Calculator.py implements the division operation via the '/' key mapping in the operations dictionary using 'self.first / second'. It also includes exception handling for 'ZeroDivisionError' to display 'Cannot divide by zero'."
     },
     {
         "ac_id": "AC-008",
@@ -122,14 +121,12 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The clear method correctly resets display to '0'",
-            "Stored operand self.first is reset to 0.0",
-            "Operator self.operator is set to None",
-            "Input state self.new_input is reset to True"
+            "The 'C' button is correctly mapped to the clear method in button_data.",
+            "The clear method resets the display value to '0', first operand to 0.0, operator to None, and new_input to True, fully resetting calculator state."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The clear method in Calculator.py fully resets all internal calculator state (self.first, self.operator, self.new_input) and the display string variable back to their initial zero/empty states."
+        "reasoning": "The clear method successfully resets all components of the calculator state (display, first operand, operator, and input state) and is properly linked to the 'C' button in the UI configuration."
     },
     {
         "ac_id": "AC-009",
@@ -140,28 +137,29 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The 'DEL' button is correctly mapped to the delete method.",
-            "The delete method properly slices the string to remove the last character when length > 1.",
-            "Edge case handled where single character input resets the display to '0'."
+            "The DEL button is correctly mapped to the delete method.",
+            "The delete method properly slices off the last character using current[:-1] when length is greater than 1.",
+            "The delete method falls back to '0' and resets new_input when only one character remains."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "The source code in Calculator.py maps the 'DEL' button to the 'delete' method, which retrieves the current display text and uses 'current[:-1]' to remove the last entered character, fully satisfying AC-009."
+        "reasoning": "The source code implements the delete method which retrieves the current display value, checks if its length is greater than 1, and updates the display by removing the last character (current[:-1]). If only one character remains, it resets the display to '0'."
     },
     {
         "ac_id": "AC-010",
-        "status": "Not Implemented",
-        "coverage": 0,
+        "status": "Implemented",
+        "coverage": 100,
         "confidence": 100,
-        "matched_files": [],
-        "strengths": [],
-        "issues": [
-            "No source files were mapped to this acceptance criterion."
+        "matched_files": [
+            "Calculator.py"
         ],
-        "recommendations": [
-            "Provide or correctly map the relevant source implementation."
+        "strengths": [
+            "Division by zero is explicitly handled using a try-except block catching ZeroDivisionError.",
+            "An error message ('Cannot divide by zero') is displayed to the user upon division by zero."
         ],
-        "reasoning": "No source files were mapped to this acceptance criterion."
+        "issues": [],
+        "recommendations": [],
+        "reasoning": "The calculate method in Calculator.py catches ZeroDivisionError when performing the division operation, sets the display string to 'Cannot divide by zero', resets the operator, and flags new input, satisfying AC-010 completely."
     },
     {
         "ac_id": "AC-011",
@@ -172,13 +170,13 @@
             "Calculator.py"
         ],
         "strengths": [
-            "The '=' button is successfully mapped to the 'calculate' method in the button configuration list.",
-            "The 'calculate' method evaluates the expression using stored operands and operators.",
-            "Handles errors gracefully during evaluation."
+            "The '=' button is successfully bound to the calculate method in button_data.",
+            "The calculate method properly evaluates the current expression based on the operator and operands.",
+            "Error handling for division by zero and unexpected exceptions is correctly implemented."
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "In Calculator.py, the button with text '=' is instantiated with command=self.calculate. The calculate method retrieves the second operand, performs the mathematical operation based on self.operator (+, -, *, /), and updates the display with the computed result."
+        "reasoning": "The source code clearly binds the '=' button to the self.calculate method in the button setup. The calculate method retrieves the current display value as the second operand, performs the operation associated with self.operator (+, -, *, /), and updates the display with the computed result."
     },
     {
         "ac_id": "AC-012",
@@ -189,11 +187,12 @@
             "Calculator.py"
         ],
         "strengths": [
-            "Results are correctly formatted based on whether they are integers or floating-point numbers.",
-            "The formatted result is properly assigned to the display variable using self.display.set()."
+            "Results are formatted by converting integer values to integer strings and keeping floats as-is",
+            "Display is updated properly via StringVar tied to the UI Entry widget",
+            "Exceptions such as division by zero and generic errors are caught and cleanly displayed"
         ],
         "issues": [],
         "recommendations": [],
-        "reasoning": "In Calculator.py, the calculate method formats the computed result by checking result.is_integer(); if true, it casts to int, otherwise it keeps the float representation, and updates the display widget via self.display.set()."
+        "reasoning": "The calculate method in Calculator.py properly checks if the result is an integer and formats it via str(int(result)) if so, or str(result) otherwise, updating the display field via self.display.set(). Error states like division by zero are also correctly handled and presented clearly."
     }
 ]

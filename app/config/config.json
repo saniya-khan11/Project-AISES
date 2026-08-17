@@ -1,7 +1,7 @@
 {
     "project_name": "AISES Demo",
     "srs_file": "examples/sample_srs.txt",
-    "source_code_folder": "examples/sample_project",
+    "source_code_folder": "C:\\Users\\lenovo\\Desktop\\test-git-repos\\calculator",
     "output_directory": "outputs",
 
     "gemini_model": "gemini-3.5-flash-lite",

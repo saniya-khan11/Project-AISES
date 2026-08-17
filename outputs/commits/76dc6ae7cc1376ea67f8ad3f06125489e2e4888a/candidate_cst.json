@@ -1,0 +1,134 @@
+[
+    {
+        "ac_id": "AC-001",
+        "requirement_id": "FR-01",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 271
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-002",
+        "requirement_id": "FR-01",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 30
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-003",
+        "requirement_id": "FR-01",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 128
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-004",
+        "requirement_id": "FR-02",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 131
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-005",
+        "requirement_id": "FR-02",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 131
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-006",
+        "requirement_id": "FR-02",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 131
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-007",
+        "requirement_id": "FR-02",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 172
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-008",
+        "requirement_id": "FR-03",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 319
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-009",
+        "requirement_id": "FR-04",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 62
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-010",
+        "requirement_id": "FR-07",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 56
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-011",
+        "requirement_id": "FR-05",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 47
+            }
+        ]
+    },
+    {
+        "ac_id": "AC-012",
+        "requirement_id": "FR-06",
+        "candidate_files": [
+            {
+                "file_id": "FILE-001",
+                "filename": "Calculator.py",
+                "score": 247
+            }
+        ]
+    }
+]

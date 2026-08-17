@@ -1,0 +1,194 @@
+{
+    "base_commit": "76dc6ae7cc1376ea67f8ad3f06125489e2e4888a",
+    "target_commit": "0a15a7fd7b030b9a06d511cd9d6add62259e8932",
+    "requirements": [
+        {
+            "ac_id": "AC-001",
+            "status": "SAFE_TO_REUSE",
+            "reason": "The mapped file changed, but none of this requirement's mapped code nodes changed.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.digit"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-002",
+            "status": "SAFE_TO_REUSE",
+            "reason": "The mapped file changed, but none of this requirement's mapped code nodes changed.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.decimal"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-003",
+            "status": "SAFE_TO_REUSE",
+            "reason": "The mapped file changed, but none of this requirement's mapped code nodes changed.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.digit"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-004",
+            "status": "UNCERTAIN",
+            "reason": "A mapped file changed, but no mapped nodes are available to determine whether this requirement was affected.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-005",
+            "status": "UNCERTAIN",
+            "reason": "A mapped file changed, but no mapped nodes are available to determine whether this requirement was affected.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-006",
+            "status": "AFFECTED",
+            "reason": "One or more mapped code nodes changed between the commits.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.set_operator",
+                "Calculator.calculate"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": [
+                "Calculator.calculate"
+            ]
+        },
+        {
+            "ac_id": "AC-007",
+            "status": "AFFECTED",
+            "reason": "One or more mapped code nodes changed between the commits.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.calculate",
+                "Calculator.set_operator"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": [
+                "Calculator.calculate"
+            ]
+        },
+        {
+            "ac_id": "AC-008",
+            "status": "SAFE_TO_REUSE",
+            "reason": "The mapped file changed, but none of this requirement's mapped code nodes changed.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.clear"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-009",
+            "status": "SAFE_TO_REUSE",
+            "reason": "The mapped file changed, but none of this requirement's mapped code nodes changed.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.delete"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": []
+        },
+        {
+            "ac_id": "AC-010",
+            "status": "AFFECTED",
+            "reason": "One or more mapped code nodes changed between the commits.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.calculate"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": [
+                "Calculator.calculate"
+            ]
+        },
+        {
+            "ac_id": "AC-011",
+            "status": "AFFECTED",
+            "reason": "One or more mapped code nodes changed between the commits.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.calculate"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": [
+                "Calculator.calculate"
+            ]
+        },
+        {
+            "ac_id": "AC-012",
+            "status": "AFFECTED",
+            "reason": "One or more mapped code nodes changed between the commits.",
+            "mapped_files": [
+                "Calculator.py"
+            ],
+            "mapped_nodes": [
+                "Calculator.calculate"
+            ],
+            "matched_changed_files": [
+                "Calculator.py"
+            ],
+            "matched_changed_nodes": [
+                "Calculator.calculate"
+            ]
+        }
+    ]
+}

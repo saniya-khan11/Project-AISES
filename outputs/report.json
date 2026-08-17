@@ -1,16 +1,16 @@
 {
     "summary": {
         "total_requirements": 12,
-        "implemented": 11,
+        "implemented": 12,
         "partially_implemented": 0,
-        "not_implemented": 1,
-        "overall_compliance": 91.67
+        "not_implemented": 0,
+        "overall_compliance": 100.0
     },
     "requirements": [
         {
             "ac_id": "AC-001",
-            "requirement_title": "Support numeric input (0-9), decimal point and multi-digit numbers.",
-            "description": "Digits 0 through 9 append correctly to the current input display.",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
+            "description": "Digits 0 through 9 append correctly to the input display when pressed.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -18,16 +18,15 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "Buttons for digits 0 through 9 are correctly mapped to lambda functions calling the digit method.",
-                "The digit method correctly handles new inputs and appending to existing display text.",
-                "Initial '0' display or new input states are correctly overwritten or appended to."
+                "Buttons for digits 0 through 9 are correctly mapped to the digit method with their respective string values.",
+                "The digit method handles replacing initial zero/new input flags as well as appending subsequent digits properly."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-002",
-            "requirement_title": "Support numeric input (0-9), decimal point and multi-digit numbers.",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
             "description": "Only one decimal point is allowed per operand.",
             "status": "Implemented",
             "confidence": 100,
@@ -36,16 +35,15 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The `decimal` method correctly checks if `'.'` is already present in the current display string before appending a new decimal point.",
-                "Handles `new_input` states properly by initializing the display to '0.' when a decimal is pressed on a fresh operand."
+                "The decimal method explicitly checks if '.' is already present in the current display value before appending a new decimal point."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-003",
-            "requirement_title": "Support numeric input (0-9), decimal point and multi-digit numbers.",
-            "description": "Multi-digit numbers are supported and displayed correctly as sequential digits are entered.",
+            "requirement_title": "Numeric Input and Multi-digit Numbers",
+            "description": "Multi-digit numbers are supported and form correctly when consecutive digits are entered.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -53,16 +51,15 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The `digit` method correctly checks if new input is expected or if the current display is '0', updating the value or appending sequential digits properly.",
-                "The `decimal` method ensures a single decimal point is allowed and correctly handles appending it to multi-digit numbers."
+                "The digit method correctly handles string concatenation of consecutive digit inputs when self.new_input is False and the current display is not '0'."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-004",
-            "requirement_title": "Perform Addition (+), Subtraction (-), Multiplication (*) and Division (/).",
-            "description": "Addition operation calculates the sum of two or more operands correctly.",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Addition operation computes the sum of operands correctly.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -70,17 +67,17 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The addition operator is properly bound in the UI button data list.",
-                "The calculate method uses a dictionary mapping containing the '+' operation correctly using self.first + second.",
-                "Calculated sums correctly update the display and support chaining operations via self.first = result."
+                "The '+' button properly registers the addition operator via set_operator.",
+                "The calculate method defines the addition operation lambda: self.first + second which correctly computes the sum of the operands.",
+                "Operands are correctly parsed as floats before calculation."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-005",
-            "requirement_title": "Perform Addition (+), Subtraction (-), Multiplication (*) and Division (/).",
-            "description": "Subtraction operation calculates the difference between operands correctly.",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Subtraction operation computes the difference of operands correctly.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -88,16 +85,17 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The subtraction operator is mapped correctly in the button data.",
-                "The calculate method properly handles the subtraction operation using `self.first - second`."
+                "Subtraction is correctly mapped using self.first - second in the operations dictionary.",
+                "Operands are properly parsed as floats.",
+                "Result formatting correctly handles integer representations."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-006",
-            "requirement_title": "Perform Addition (+), Subtraction (-), Multiplication (*) and Division (/).",
-            "description": "Multiplication operation calculates the product of operands correctly.",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Multiplication operation computes the product of operands correctly.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -105,16 +103,16 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The multiplication operator is correctly mapped in the operations dictionary as `\"*\": lambda: self.first * second`.",
-                "Operands are correctly converted to float types prior to calculation to handle decimals."
+                "The multiplication operator '*' is mapped correctly to set_operator.",
+                "The calculate method implements multiplication using 'self.first * second'."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-007",
-            "requirement_title": "Perform Addition (+), Subtraction (-), Multiplication (*) and Division (/).",
-            "description": "Division operation calculates the quotient of operands correctly.",
+            "requirement_title": "Basic Arithmetic Operations",
+            "description": "Division operation computes the quotient of operands correctly.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -122,16 +120,17 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The division operator '/' is correctly mapped in operations dictionary to perform self.first / second.",
-                "Exception handling is present to catch runtime errors such as division by zero."
+                "Division operation is correctly implemented using the '/' operator in the calculate method.",
+                "Handles division by zero properly with a ZeroDivisionError exception handler.",
+                "Maps the division button '/' cleanly to the set_operator function."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-008",
-            "requirement_title": "Provide Clear (C) to reset all calculator state.",
-            "description": "Clear (C) button resets all calculator state, memory, and display to initial zero or empty state.",
+            "requirement_title": "Clear State",
+            "description": "Clear (C) button resets all calculator state and display values.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -139,17 +138,15 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The clear method correctly resets display to '0'",
-                "Stored operand self.first is reset to 0.0",
-                "Operator self.operator is set to None",
-                "Input state self.new_input is reset to True"
+                "The 'C' button is correctly mapped to the clear method in button_data.",
+                "The clear method resets the display value to '0', first operand to 0.0, operator to None, and new_input to True, fully resetting calculator state."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-009",
-            "requirement_title": "Provide Delete (DEL) to remove the last entered character.",
+            "requirement_title": "Delete Last Character",
             "description": "Delete (DEL) button removes the last entered character from the input display.",
             "status": "Implemented",
             "confidence": 100,
@@ -158,33 +155,17 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The 'DEL' button is correctly mapped to the delete method.",
-                "The delete method properly slices the string to remove the last character when length > 1.",
-                "Edge case handled where single character input resets the display to '0'."
+                "The DEL button is correctly mapped to the delete method.",
+                "The delete method properly slices off the last character using current[:-1] when length is greater than 1.",
+                "The delete method falls back to '0' and resets new_input when only one character remains."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-010",
-            "requirement_title": "Validate division by zero BEFORE division and display an error message instead of performing the calculation.",
-            "description": "Division by zero is detected before calculation and triggers an error message display instead of executing the operation.",
-            "status": "Not Implemented",
-            "confidence": 100,
-            "coverage": 0,
-            "matched_files": [],
-            "strengths": [],
-            "issues": [
-                "No source files were mapped to this acceptance criterion."
-            ],
-            "recommendations": [
-                "Provide or correctly map the relevant source implementation."
-            ]
-        },
-        {
-            "ac_id": "AC-011",
-            "requirement_title": "Evaluate the expression when '=' is pressed.",
-            "description": "Equals (=) button triggers the evaluation of the current mathematical expression.",
+            "requirement_title": "Division by Zero Validation",
+            "description": "Division by zero is detected before calculation and an error message is displayed instead of performing the calculation.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -192,17 +173,34 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "The '=' button is successfully mapped to the 'calculate' method in the button configuration list.",
-                "The 'calculate' method evaluates the expression using stored operands and operators.",
-                "Handles errors gracefully during evaluation."
+                "Division by zero is explicitly handled using a try-except block catching ZeroDivisionError.",
+                "An error message ('Cannot divide by zero') is displayed to the user upon division by zero."
+            ],
+            "issues": [],
+            "recommendations": []
+        },
+        {
+            "ac_id": "AC-011",
+            "requirement_title": "Evaluate Expression",
+            "description": "Pressing '=' computes the result of the current expression.",
+            "status": "Implemented",
+            "confidence": 100,
+            "coverage": 100,
+            "matched_files": [
+                "Calculator.py"
+            ],
+            "strengths": [
+                "The '=' button is successfully bound to the calculate method in button_data.",
+                "The calculate method properly evaluates the current expression based on the operator and operands.",
+                "Error handling for division by zero and unexpected exceptions is correctly implemented."
             ],
             "issues": [],
             "recommendations": []
         },
         {
             "ac_id": "AC-012",
-            "requirement_title": "Display formatted numeric results.",
-            "description": "Calculated results are formatted correctly and presented in the display field.",
+            "requirement_title": "Display Formatted Numeric Results",
+            "description": "Results are formatted correctly and presented clearly on the display field.",
             "status": "Implemented",
             "confidence": 100,
             "coverage": 100,
@@ -210,8 +208,9 @@
                 "Calculator.py"
             ],
             "strengths": [
-                "Results are correctly formatted based on whether they are integers or floating-point numbers.",
-                "The formatted result is properly assigned to the display variable using self.display.set()."
+                "Results are formatted by converting integer values to integer strings and keeping floats as-is",
+                "Display is updated properly via StringVar tied to the UI Entry widget",
+                "Exceptions such as division by zero and generic errors are caught and cleanly displayed"
             ],
             "issues": [],
             "recommendations": []

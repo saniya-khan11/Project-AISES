@@ -1,0 +1,26 @@
+{
+    "base_commit": "76dc6ae7cc1376ea67f8ad3f06125489e2e4888a",
+    "target_commit": "0a15a7fd7b030b9a06d511cd9d6add62259e8932",
+    "files": [
+        {
+            "file": "Calculator.py",
+            "change_type": "modified",
+            "added_lines": [
+                [
+                    109,
+                    113
+                ]
+            ],
+            "deleted_lines": [],
+            "changed_nodes": [
+                {
+                    "node": "Calculator.calculate",
+                    "node_type": "function_definition",
+                    "start_line": 86,
+                    "end_line": 117
+                }
+            ],
+            "status": "ANALYZED"
+        }
+    ]
+}

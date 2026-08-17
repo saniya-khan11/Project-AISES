@@ -1,0 +1,146 @@
+[
+    {
+        "ac_id": "AC-001",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.digit"
+        ],
+        "confidence": 1,
+        "reasoning": "The file Calculator.py contains the implementation of the digit method, which handles appending digits 0 through 9 to the display, satisfying the acceptance criterion.",
+        "mapping_source": "REUSED_FROM_BASE"
+    },
+    {
+        "ac_id": "AC-002",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.decimal"
+        ],
+        "confidence": 100,
+        "reasoning": "The file Calculator.py contains the decimal method which implements the logic for adding a decimal point. It checks if the current operand already contains a decimal point using 'elif \".\" not in current:', ensuring that only one decimal point is allowed per operand.",
+        "mapping_source": "REUSED_FROM_BASE"
+    },
+    {
+        "ac_id": "AC-003",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.digit"
+        ],
+        "confidence": 100,
+        "reasoning": "The Calculator.py file contains the implementation of the digit method, which handles multi-digit number input by checking if new input is expected or if the current value is '0', and otherwise concatenates the new digit string to the existing display value (current + value), fulfilling the requirements for multi-digit number support.",
+        "mapping_source": "REUSED_FROM_BASE"
+    },
+    {
+        "ac_id": "AC-004",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.set_operator",
+            "Calculator.calculate"
+        ],
+        "confidence": 1,
+        "reasoning": "Calculator.py contains the implementation for the addition operation. Specifically, the button '+' maps to lambda: self.set_operator(\"+\"), which records the addition operator and stores the first operand. Furthermore, the calculate method implements the addition logic via the operations dictionary (\"+\": lambda: self.first + second), fulfilling the requirements for the addition operation.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-005",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [],
+        "confidence": 1,
+        "reasoning": "Calculator.py contains the subtraction button mapping (\"-\", lambda: self.set_operator(\"-\")), records the subtraction operator in the calculation state via set_operator, and correctly computes the difference of operands using self.first - second in the calculate method.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-006",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.set_operator",
+            "Calculator.calculate"
+        ],
+        "confidence": 1,
+        "reasoning": "The file Calculator.py implements the multiplication operation through the button mapping for '*' which calls set_operator(\"*\") and the calculation logic in the calculate method that includes the operation '*' computing the product of self.first and second.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-007",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator",
+            "Calculator.set_operator",
+            "Calculator.calculate"
+        ],
+        "confidence": 1,
+        "reasoning": "Calculator.py contains the implementation for the division operation in both the button mapping (\"/\") which calls set_operator, and within the calculate method where the division key \"/\" computes the quotient (self.first / second), fulfilling AC-007.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-008",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.clear"
+        ],
+        "confidence": 1,
+        "reasoning": "The Calculator.py file contains the implementation of the clear button functionality in the 'clear' method of the Calculator class, which resets the display value to '0', clears internal calculation states such as 'first', 'operator', and sets 'new_input' to True. It is also mapped to the 'C' button in the button data configuration.",
+        "mapping_source": "REUSED_FROM_BASE"
+    },
+    {
+        "ac_id": "AC-009",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.delete"
+        ],
+        "confidence": 1,
+        "reasoning": "The file Calculator.py implements the delete functionality through the delete method and maps the 'DEL' button to this method, which removes the last character from the input display or resets it to '0' if only one character remains.",
+        "mapping_source": "REUSED_FROM_BASE"
+    },
+    {
+        "ac_id": "AC-010",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [],
+        "confidence": 1,
+        "reasoning": "The file Calculator.py implements the division by zero validation inside the calculate method, where a ZeroDivisionError is caught and sets the display message to 'Cannot divide by zero', preventing the erroneous calculation and fulfilling the acceptance criterion.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-011",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.calculate"
+        ],
+        "confidence": 1,
+        "reasoning": "Calculator.py contains the implementation of the equals button command binding (self.calculate) and the calculate method which evaluates the current expression using the selected operator and operands, updating the display with the computed result.",
+        "mapping_source": "REMAPPED_TARGET"
+    },
+    {
+        "ac_id": "AC-012",
+        "matched_files": [
+            "Calculator.py"
+        ],
+        "matched_nodes": [
+            "Calculator.calculate"
+        ],
+        "confidence": 1,
+        "reasoning": "The file Calculator.py contains the implementation of the calculate method which processes the computation result, formats it appropriately (converting to int if it's an integer or keeping as float via str(int(result)) if result.is_integer() else str(result)), and updates the display field via self.display.set(), satisfying the requirement to display formatted numeric results.",
+        "mapping_source": "REMAPPED_TARGET"
+    }
+]

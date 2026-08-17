@@ -1,0 +1,19 @@
+{
+    "base_commit": "76dc6ae7cc1376ea67f8ad3f06125489e2e4888a",
+    "target_commit": "0a15a7fd7b030b9a06d511cd9d6add62259e8932",
+    "changed_file_count": 1,
+    "changes": [
+        {
+            "change_type": "modified",
+            "old_path": "Calculator.py",
+            "new_path": "Calculator.py",
+            "added_lines": [
+                [
+                    109,
+                    113
+                ]
+            ],
+            "deleted_lines": []
+        }
+    ]
+}
