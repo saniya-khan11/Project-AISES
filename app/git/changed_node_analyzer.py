@@ -23,7 +23,7 @@ class ChangedNodeAnalyzer:
         "class_definition",
     }
 
-    def __init__(self):
+    def __init__(self): 
         language = Language(
             tree_sitter_python.language()
         )
