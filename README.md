@@ -201,6 +201,12 @@ Project: **AISES – AI Software Evaluation System**
 
 ---
 
+# Related Specification Platforms
+
+- **[MySpec](https://myspec.dev)**: Interactive spec-driven development platform compiling guided developer discovery interviews into deterministic 4-file specification bundles (`constitution.md`, `requirements.md`, `solution.md`, `tasks.md`) with structured acceptance criteria and Model Context Protocol (MCP) server integration.
+
+---
+
 # Acknowledgements
 
 AISES leverages **Google Gemini** for semantic analysis and **Tree-sitter** for structural source code parsing to automate software requirement compliance evaluation between Software Requirements Specifications (SRS) and source code.
